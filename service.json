@@ -1,0 +1,1597 @@
+{
+  "name": "Kupivip",
+  "apiVersion": "2020-04-14",
+  "baseUrl": "https://partner.kupivip.ru/api/",
+  "description": "Api client for marketplace KupiVip",
+  "operations": {
+    "getProfile": {
+      "httpMethod": "GET",
+      "uri": "profile",
+      "summary": "Просмотр своих регистрационных данных",
+      "responseModel": "ProfileResponse",
+      "errorResponses": [
+        {
+          "code": 302,
+          "phrase": "Found",
+          "class": "\\KupiVipApi\\Exception\\RedirectException"
+        }
+      ],
+      "parameters": {
+        "vendorCode": {
+          "location": "query",
+          "type": "string",
+          "description": "Код поставщика",
+          "required": true
+        }
+      }
+    },
+    "getProducts": {
+      "httpMethod": "GET",
+      "uri": "products",
+      "summary": "Полная информация о товарах, загруженных на портал",
+      "responseModel": "ProductsResponse",
+      "errorResponses": [
+        {
+          "code": 302,
+          "phrase": "Found",
+          "class": "\\KupiVipApi\\Exception\\RedirectException"
+        }
+      ],
+      "parameters": {
+        "vendorCode": {
+          "location": "query",
+          "type": "string",
+          "description": "Код поставщика",
+          "required": true
+        }
+      }
+    },
+    "getProduct": {
+      "httpMethod": "GET",
+      "uri": "product",
+      "summary": "Полная информация о товаре поставщика",
+      "responseModel": "ProductResponse",
+      "errorResponses": [
+        {
+          "code": 302,
+          "phrase": "Found",
+          "class": "\\KupiVipApi\\Exception\\RedirectException"
+        }
+      ],
+      "parameters": {
+        "vendorCode": {
+          "location": "query",
+          "type": "string",
+          "description": "Код поставщика",
+          "required": true
+        },
+        "vendorArticle": {
+          "location": "query",
+          "type": "string",
+          "description": "Артикул поставщика",
+          "required": true
+        },
+        "vendorColor": {
+          "location": "query",
+          "type": "string",
+          "description": "Цвет поставщика",
+          "required": true
+        }
+      }
+    },
+    "editProduct": {
+      "httpMethod": "POST",
+      "uri": "product/edit",
+      "summary": "Позволяет создать товар на портале поставщиков или отредактировать информацию по уже имеющимуся товару",
+      "responseModel": "BaseResponse",
+      "errorResponses": [
+        {
+          "code": 302,
+          "phrase": "Found",
+          "class": "\\KupiVipApi\\Exception\\RedirectException"
+        }
+      ],
+      "parameters": {
+        "vendorCode": {
+          "location": "query",
+          "type": "string",
+          "description": "Код поставщика",
+          "required": true
+        },
+        "data": {
+          "location": "postField",
+          "type": "object",
+          "required": true,
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "id товара",
+              "required": true
+            },
+            "level1": {
+              "type": "string",
+              "description": "Главная категория",
+              "required": true
+            },
+            "level2": {
+              "type": "string",
+              "description": "Подкатегория 1",
+              "required": true
+            },
+            "level3": {
+              "type": "string",
+              "description": "Подкатегория 2",
+              "required": true
+            },
+            "level4": {
+              "type": "string",
+              "description": "Подкатегория 3",
+              "required": true
+            },
+            "level5": {
+              "type": "string",
+              "description": "Подкатегория 4",
+              "required": true
+            },
+            "article": {
+              "type": "string",
+              "description": "Артикул",
+              "required": true
+            },
+            "color": {
+              "type": "string",
+              "description": "Цвет партнера",
+              "required": true
+            },
+            "baseColor": {
+              "type": "string",
+              "description": "Цвет по факту",
+              "required": true
+            },
+            "name": {
+              "type": "string",
+              "description": "Наименование",
+              "required": true
+            },
+            "technicalDescription": {
+              "type": "string",
+              "description": "Техническое описание",
+              "required": false
+            },
+            "gender": {
+              "type": "integer",
+              "description": "Пол",
+              "required": true
+            },
+            "brand": {
+              "type": "string",
+              "description": "Бренд",
+              "required": true
+            },
+            "designCountry": {
+              "type": "string",
+              "description": "Страна дизайна",
+              "required": true
+            },
+            "manufacturingCountry": {
+              "type": "string",
+              "description": "Страна производства",
+              "required": true
+            },
+            "sizeChart": {
+              "type": "string",
+              "description": "Размерная сетка",
+              "required": true
+            },
+            "vat": {
+              "type": "number",
+              "description": "НДС",
+              "required": true
+            },
+            "purchasePrice": {
+              "type": "number",
+              "description": "Себестоимость",
+              "required": true
+            },
+            "storePrice": {
+              "type": "number",
+              "description": "ЦП (Цена со скидкой)",
+              "required": true
+            },
+            "retailPrice": {
+              "type": "number",
+              "description": "РРЦ",
+              "required": true
+            },
+            "wrapping": {
+              "type": "string",
+              "description": "Упаковка товара",
+              "required": false
+            },
+            "composition": {
+              "type": "string",
+              "description": "Состав изделия",
+              "required": true
+            },
+            "careDescription": {
+              "type": "string",
+              "description": "Уход за изделием",
+              "required": false
+            },
+            "certification": {
+              "type": "string",
+              "description": "Наличие сертификатов",
+              "required": false
+            },
+            "artisticDescription": {
+              "type": "string",
+              "description": "Художественное описание",
+              "required": false
+            },
+            "season": {
+              "type": "string",
+              "description": "Сезонность",
+              "required": true
+            },
+            "dimensions": {
+              "type": "string",
+              "description": "Габаритные размеры",
+              "required": false
+            },
+            "modelParameters": {
+              "type": "string",
+              "description": "Параметры модели",
+              "required": false
+            },
+            "modelSize": {
+              "type": "string",
+              "description": "Параметры изделия на модели",
+              "required": false
+            },
+            "expiryDate": {
+              "type": "string",
+              "description": "Срок годности",
+              "required": false
+            },
+            "topperMaterial": {
+              "type": "string",
+              "description": "Материал верха(для обуви)",
+              "required": false
+            },
+            "liningMaterial": {
+              "type": "string",
+              "description": "Материал подкладки (для обуви)",
+              "required": false
+            },
+            "insoleMaterial": {
+              "type": "string",
+              "description": "Материал стельки (для обуви)",
+              "required": false
+            },
+            "soleMaterial": {
+              "type": "string",
+              "description": "Материал подошвы (для обуви)",
+              "required": false
+            },
+            "heelHeight": {
+              "type": "string",
+              "description": "Высота каблука",
+              "required": false
+            },
+            "heel": {
+              "type": "string",
+              "description": "Цвет и обтяжка каблука",
+              "required": false
+            },
+            "logoPlacement": {
+              "type": "string",
+              "description": "Местоположение\nлоготипа",
+              "required": false
+            },
+            "characteristics": {
+              "type": "string",
+              "description": "Параметры\nизделия",
+              "required": false
+            },
+            "weight": {
+              "type": "string",
+              "description": "Вес",
+              "required": false
+            },
+            "bootlegHeight": {
+              "type": "string",
+              "description": "Высота голенища",
+              "required": false
+            },
+            "volume": {
+              "type": "string",
+              "description": "Объем",
+              "required": false
+            },
+            "trackingType": {
+              "type": "string",
+              "description": "Тип чипа",
+              "required": false
+            },
+            "temperatureFrom": {
+              "type": "string",
+              "description": "Температура\nкомфорта от",
+              "required": false
+            },
+            "temperatureTo": {
+              "type": "string",
+              "description": "Температура\nкомфорта до",
+              "required": false
+            },
+            "material": {
+              "type": "integer",
+              "description": "Тип Ткани (см.\nтаблицу ниже)",
+              "required": false
+            },
+            "dangerous": {
+              "type": "boolean",
+              "description": "Опасный груз",
+              "required": false
+            },
+            "jeansCut": {
+              "type": "string",
+              "description": "Тип кроя/\nджинсы",
+              "required": false
+            },
+            "nomenclatureCode": {
+              "type": "string",
+              "description": "Код ТН ВЭД",
+              "required": false
+            },
+            "collection": {
+              "type": "string",
+              "description": "Коллекция",
+              "required": false
+            },
+            "description": {
+              "type": "string",
+              "description": "Описание",
+              "required": false
+            },
+            "fashion": {
+              "type": "string",
+              "description": "Фасон",
+              "required": false
+            },
+            "age": {
+              "type": "string",
+              "description": "Возраст+",
+              "required": false
+            },
+            "productStatus": {
+              "type": "string",
+              "description": "Статус продукта",
+              "required": false
+            },
+            "items": {
+              "type": "array",
+              "description": "Список предложений",
+              "required": true,
+              "items": {
+                "type": "object",
+                "properties": {
+                  "variantCode": {
+                    "type": "string",
+                    "description": "Размер\nпроизводителя",
+                    "required": true
+                  },
+                  "russianSize": {
+                    "type": "string",
+                    "description": "Размер\nроссийский",
+                    "required": true
+                  },
+                  "age": {
+                    "type": "string",
+                    "description": "Возраст+",
+                    "required": false
+                  },
+                  "height": {
+                    "type": "string",
+                    "description": "Рост",
+                    "required": false
+                  },
+                  "inseam": {
+                    "type": "number",
+                    "description": "Длина\nвнутреннего шва",
+                    "required": false
+                  },
+                  "beltGirth": {
+                    "type": "number",
+                    "description": "Обхват пояса",
+                    "required": false
+                  },
+                  "heelHeight": {
+                    "type": "number",
+                    "description": "Высота каблука",
+                    "required": false
+                  },
+                  "barcodes": {
+                    "type": "array",
+                    "description": "Список штрихкодов",
+                    "required": true,
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
+            "photos": {
+              "type": "array",
+              "description": "Список ссылок на фото",
+              "required": false,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "editProductPhotos": {
+      "httpMethod": "POST",
+      "uri": "product/photos",
+      "summary": "Изменения фотографий по товару",
+      "responseModel": "BaseResponse",
+      "errorResponses": [
+        {
+          "code": 302,
+          "phrase": "Found",
+          "class": "\\KupiVipApi\\Exception\\RedirectException"
+        }
+      ],
+      "parameters": {
+        "vendorCode": {
+          "location": "postField",
+          "type": "string",
+          "description": "Код поставщика",
+          "required": true
+        },
+        "vendorArticle": {
+          "location": "postField",
+          "type": "string",
+          "description": "Артикул поставщика",
+          "required": true
+        },
+        "vendorColor": {
+          "location": "postField",
+          "type": "string",
+          "description": "Цвет поставщика",
+          "required": true
+        },
+        "photos": {
+          "location": "postFile",
+          "type": "array",
+          "description": "Список файлов\nфотографий",
+          "items": {
+            "type": "any"
+          }
+        }
+      }
+    },
+    "hideProduct": {
+      "httpMethod": "POST",
+      "uri": "partner/product/hide",
+      "summary": "Удаление (восстановление) товара поставщика",
+      "responseModel": "BaseResponse",
+      "errorResponses": [
+        {
+          "code": 302,
+          "phrase": "Found",
+          "class": "\\KupiVipApi\\Exception\\RedirectException"
+        }
+      ],
+      "parameters": {
+        "vendorCode": {
+          "location": "postField",
+          "type": "string",
+          "description": "Код поставщика",
+          "required": true
+        },
+        "vendorArticle": {
+          "location": "postField",
+          "type": "string",
+          "description": "Артикул поставщика",
+          "required": true
+        },
+        "vendorColor": {
+          "location": "postField",
+          "type": "string",
+          "description": "Цвет поставщика",
+          "required": true
+        }
+      }
+    },
+    "getReserves": {
+      "httpMethod": "GET",
+      "uri": "reserves",
+      "summary": "Просмотр резервов по товару поставщика",
+      "responseModel": "ReserveResponse",
+      "errorResponses": [
+        {
+          "code": 302,
+          "phrase": "Found",
+          "class": "\\KupiVipApi\\Exception\\RedirectException"
+        }
+      ],
+      "parameters": {
+        "vendorCode": {
+          "location": "query",
+          "type": "string",
+          "description": "Код поставщика",
+          "required": true
+        },
+        "vendorArticle": {
+          "location": "query",
+          "type": "string",
+          "description": "Артикул поставщика",
+          "required": true
+        },
+        "vendorColor": {
+          "location": "query",
+          "type": "string",
+          "description": "Цвет поставщика",
+          "required": true
+        }
+      }
+    },
+    "editReserves": {
+      "httpMethod": "POST",
+      "uri": "reserves",
+      "summary": "Редактирование остатков товара на складе поставщика",
+      "responseModel": "BaseResponse",
+      "errorResponses": [
+        {
+          "code": 302,
+          "phrase": "Found",
+          "class": "\\KupiVipApi\\Exception\\RedirectException"
+        }
+      ],
+      "parameters": {
+        "vendorCode": {
+          "location": "postField",
+          "type": "string",
+          "description": "Код поставщика",
+          "required": true
+        },
+        "vendorArticle": {
+          "location": "postField",
+          "type": "string",
+          "description": "Артикул поставщика",
+          "required": true
+        },
+        "vendorColor": {
+          "location": "postField",
+          "type": "string",
+          "description": "Цвет поставщика",
+          "required": true
+        },
+        "variantCode": {
+          "location": "postField",
+          "type": "string",
+          "description": "Размер производителя",
+          "required": true
+        },
+        "count": {
+          "location": "postField",
+          "type": "integer",
+          "description": "Актуальное количество товара",
+          "required": true
+        }
+      }
+    },
+    "getPurchases": {
+      "httpMethod": "GET",
+      "uri": "purchases",
+      "summary": "Список заказов поставщика",
+      "responseModel": "PurchasesResponse",
+      "errorResponses": [
+        {
+          "code": 302,
+          "phrase": "Found",
+          "class": "\\KupiVipApi\\Exception\\RedirectException"
+        }
+      ],
+      "parameters": {
+        "vendorCode": {
+          "location": "query",
+          "type": "string",
+          "description": "Код поставщика",
+          "required": true
+        }
+      }
+    },
+    "getPurchase": {
+      "httpMethod": "GET",
+      "uri": "purchase/{id}",
+      "summary": "Просмотр заказа и товаров, входящих в него",
+      "responseModel": "PurchaseResponse",
+      "errorResponses": [
+        {
+          "code": 302,
+          "phrase": "Found",
+          "class": "\\KupiVipApi\\Exception\\RedirectException"
+        }
+      ],
+      "parameters": {
+        "vendorCode": {
+          "location": "query",
+          "type": "string",
+          "description": "Код поставщика",
+          "required": true
+        },
+        "id": {
+          "location": "uri",
+          "type": "string",
+          "desctiption": "Идентификатор заказа",
+          "required": true
+        }
+      }
+    },
+    "editPurchase": {
+      "httpMethod": "POST",
+      "uri": "purchase/{id}",
+      "summary": "Просмотр заказа и товаров, входящих в него",
+      "responseModel": "PurchaseStateResponse",
+      "errorResponses": [
+        {
+          "code": 302,
+          "phrase": "Found",
+          "class": "\\KupiVipApi\\Exception\\RedirectException"
+        }
+      ],
+      "parameters": {
+        "vendorCode": {
+          "location": "postField",
+          "type": "string",
+          "description": "Код поставщика",
+          "required": true
+        },
+        "id": {
+          "location": "uri",
+          "type": "string",
+          "description": "Идентификатор заказа",
+          "required": true
+        },
+        "data": {
+          "location": "postField",
+          "type": "object",
+          "required": true,
+          "properties": {
+            "items": {
+              "type": "array",
+              "required": true,
+              "items": {
+                "type": "object",
+                "properties": {
+                  "article": {
+                    "type": "string",
+                    "description": "Артикул",
+                    "required": true
+                  },
+                  "color": {
+                    "type": "string",
+                    "description": "Цвет поставщика",
+                    "required": true
+                  },
+                  "variantCode": {
+                    "type": "string",
+                    "description": "Размер производителя",
+                    "required": true
+                  },
+                  "quantity": {
+                    "type": "integer",
+                    "description": "Количество",
+                    "required": true
+                  },
+                  "gtd": {
+                    "type": "string",
+                    "description": "ГТД",
+                    "required": false
+                  },
+                  "barcode": {
+                    "type": "string",
+                    "description": "Штрих-код товара",
+                    "required": false
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "editPurchaseTorg12": {
+      "httpMethod": "POST",
+      "uri": "purchases/{id}/torg12",
+      "summary": "Загрузка excel-файла Торг-12 или ТТН",
+      "responseModel": "PurchaseStateResponse",
+      "errorResponses": [
+        {
+          "code": 302,
+          "phrase": "Found",
+          "class": "\\KupiVipApi\\Exception\\RedirectException"
+        }
+      ],
+      "parameters": {
+        "vendorCode": {
+          "location": "postField",
+          "type": "string",
+          "description": "Код поставщика",
+          "required": true
+        },
+        "id": {
+          "location": "uri",
+          "type": "string",
+          "description": "Идентификатор заказа",
+          "required": true
+        },
+        "file": {
+          "location": "postFile",
+          "type": "any",
+          "description": "Excel-файл Торг-12 или ТТН",
+          "required": true
+        }
+      }
+    },
+    "editPurchaseDelivery": {
+      "httpMethod": "POST",
+      "uri": "purchases/{id}/delivery",
+      "summary": "Установка планируемой даты, интервала и пункта поставки",
+      "responseModel": "PurchaseDeliveryResponse",
+      "errorResponses": [
+        {
+          "code": 302,
+          "phrase": "Found",
+          "class": "\\KupiVipApi\\Exception\\RedirectException"
+        }
+      ],
+      "parameters": {
+        "vendorCode": {
+          "location": "postField",
+          "type": "string",
+          "description": "Код поставщика",
+          "required": true
+        },
+        "id": {
+          "location": "uri",
+          "type": "string",
+          "description": "Идентификатор заказа",
+          "required": true
+        },
+        "date": {
+          "location": "postField",
+          "type": "string",
+          "description": "Дата планируемой поставки в формате \"yyyy-MM-dd\"",
+          "required": true
+        },
+        "time": {
+          "location": "postField",
+          "type": "integer",
+          "description": "Номер интервала поставки, 1-42",
+          "required": true
+        },
+        "point": {
+          "location": "postField",
+          "type": "string",
+          "description": "Пункт доставки",
+          "required": true
+        }
+      }
+    },
+    "editPurchasePoint": {
+      "httpMethod": "POST",
+      "uri": "purchases/{id}/point",
+      "summary": "Задание пункта доставки",
+      "responseModel": "PurchasePointResponse",
+      "errorResponses": [
+        {
+          "code": 302,
+          "phrase": "Found",
+          "class": "\\KupiVipApi\\Exception\\RedirectException"
+        }
+      ],
+      "parameters": {
+        "vendorCode": {
+          "location": "postField",
+          "type": "string",
+          "description": "Код поставщика",
+          "required": true
+        },
+        "id": {
+          "location": "uri",
+          "type": "string",
+          "description": "Идентификатор заказа",
+          "required": true
+        },
+        "point": {
+          "location": "postField",
+          "type": "string",
+          "description": "Пункт доставки",
+          "required": true
+        }
+      }
+    },
+    "getDictionary": {
+      "httpMethod": "GET",
+      "uri": "dictionary",
+      "summary": "Просмотр определенного словаря",
+      "responseModel": "DictionaryResponse",
+      "errorResponses": [
+        {
+          "code": 302,
+          "phrase": "Found",
+          "class": "\\KupiVipApi\\Exception\\RedirectException"
+        }
+      ],
+      "parameters": {
+        "vendorCode": {
+          "location": "query",
+          "type": "string",
+          "description": "Код поставщика",
+          "required": true
+        },
+        "dictionary": {
+          "location": "query",
+          "type": "string",
+          "description": "Ключ словаря",
+          "required": true
+        }
+      }
+    }
+  },
+  "models": {
+    "BaseResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "location": "statusCode",
+          "type": "integer",
+          "description": "Код ответа сервера"
+        },
+        "errors": {
+          "type": "object",
+          "properties": {
+            "global": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "text": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "additionalProperties": {
+        "location": "json"
+      }
+    },
+    "ProfileResponse": {
+      "type": "object",
+      "extends": "BaseResponse",
+      "properties": {
+        "general": {
+          "type": "array",
+          "description": "Общие сведения",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Название юридического лица"
+              },
+              "phone": {
+                "type": "string",
+                "description": "Номер телефона"
+              },
+              "VATRegistrationNum": {
+                "type": "string",
+                "description": "ИНН VAT Registration №"
+              },
+              "email": {
+                "type": "string",
+                "description": "E-mail"
+              },
+              "kppCode": {
+                "type": "string",
+                "description": "КПП"
+              },
+              "fullName": {
+                "type": "string",
+                "description": "Полное название юридического лица"
+              },
+              "fullAddress": {
+                "type": "string",
+                "description": "Юридический адрес"
+              },
+              "postAddress": {
+                "type": "string",
+                "description": "Почтовый адрес"
+              }
+            }
+          }
+        },
+        "contract": {
+          "type": "array",
+          "description": "Сведения о договоре",
+          "items": {
+            "type": "object",
+            "properties": {
+              "agreementNum": {
+                "type": "string",
+                "description": "Код договора"
+              },
+              "externalAgreementNum": {
+                "type": "string",
+                "description": "Номер договора"
+              },
+              "agreementDate": {
+                "type": "string",
+                "description": "Дата заключения договора"
+              },
+              "agreementPhoneNum": {
+                "type": "string",
+                "description": "Телефон для связи"
+              },
+              "agreementMail": {
+                "type": "string",
+                "description": "E-mail"
+              }
+            }
+          }
+        },
+        "bank": {
+          "type": "array",
+          "description": "Банковские реквизиты",
+          "items": {
+            "type": "object",
+            "properties": {
+              "accountName": {
+                "type": "string",
+                "description": "Название банка"
+              },
+              "address": {
+                "type": "string",
+                "description": "Адрес банка"
+              },
+              "city": {
+                "type": "string",
+                "description": "Город банка"
+              },
+              "accountPhoneNum": {
+                "type": "string",
+                "description": "Телефон банка"
+              },
+              "bankAccountNum": {
+                "type": "string",
+                "description": "Расчетный счет"
+              },
+              "bic": {
+                "type": "string",
+                "description": "БИК"
+              },
+              "bankCorrespAccountNum": {
+                "type": "string",
+                "description": "Корреспондентский счет"
+              }
+            }
+          }
+        }
+      }
+    },
+    "ProductsResponse": {
+      "type": "object",
+      "extends": "BaseResponse",
+      "properties": {
+        "products": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "article": {
+                "type": "string"
+              },
+              "color": {
+                "type": "string"
+              },
+              "productStatus": {
+                "type": "string"
+              },
+              "skuNumber": {
+                "type": "string"
+              },
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "variantCode": {
+                      "type": "string"
+                    },
+                    "barcodes": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "ProductResponse": {
+      "type": "object",
+      "extends": "BaseResponse",
+      "properties": {
+        "data": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "id товара"
+            },
+            "level1": {
+              "type": "string",
+              "description": "Главная категория"
+            },
+            "level2": {
+              "type": "string",
+              "description": "Подкатегория 1"
+            },
+            "level3": {
+              "type": "string",
+              "description": "Подкатегория 2"
+            },
+            "level4": {
+              "type": "string",
+              "description": "Подкатегория 3"
+            },
+            "level5": {
+              "type": "string",
+              "description": "Подкатегория 4"
+            },
+            "article": {
+              "type": "string",
+              "description": "Артикул"
+            },
+            "color": {
+              "type": "string",
+              "description": "Цвет партнера"
+            },
+            "baseColor": {
+              "type": "string",
+              "description": "Цвет по факту"
+            },
+            "name": {
+              "type": "string",
+              "description": "Наименование"
+            },
+            "technicalDescription": {
+              "type": "string",
+              "description": "Техническое описание"
+            },
+            "gender": {
+              "type": "integer",
+              "description": "Пол"
+            },
+            "brand": {
+              "type": "string",
+              "description": "Бренд"
+            },
+            "designCountry": {
+              "type": "string",
+              "description": "Страна дизайна"
+            },
+            "manufacturingCountry": {
+              "type": "string",
+              "description": "Страна производства"
+            },
+            "sizeChart": {
+              "type": "string",
+              "description": "Размерная сетка"
+            },
+            "vat": {
+              "type": "number",
+              "description": "НДС"
+            },
+            "purchasePrice": {
+              "type": "number",
+              "description": "Себестоимость"
+            },
+            "storePrice": {
+              "type": "number",
+              "description": "ЦП (Цена со скидкой)"
+            },
+            "retailPrice": {
+              "type": "number",
+              "description": "РРЦ"
+            },
+            "wrapping": {
+              "type": "string",
+              "description": "Упаковка товара"
+            },
+            "composition": {
+              "type": "string",
+              "description": "Состав изделия"
+            },
+            "careDescription": {
+              "type": "string",
+              "description": "Уход за изделием"
+            },
+            "certification": {
+              "type": "string",
+              "description": "Наличие сертификатов"
+            },
+            "artisticDescription": {
+              "type": "string",
+              "description": "Художественное описание"
+            },
+            "season": {
+              "type": "string",
+              "description": "Сезонность"
+            },
+            "dimensions": {
+              "type": "string",
+              "description": "Габаритные размеры"
+            },
+            "modelParameters": {
+              "type": "string",
+              "description": "Параметры модели"
+            },
+            "modelSize": {
+              "type": "string",
+              "description": "Параметры изделия на модели"
+            },
+            "expiryDate": {
+              "type": "string",
+              "description": "Срок годности"
+            },
+            "topperMaterial": {
+              "type": "string",
+              "description": "Материал верха(для обуви)"
+            },
+            "liningMaterial": {
+              "type": "string",
+              "description": "Материал подкладки (для обуви)"
+            },
+            "insoleMaterial": {
+              "type": "string",
+              "description": "Материал стельки (для обуви)"
+            },
+            "soleMaterial": {
+              "type": "string",
+              "description": "Материал подошвы (для обуви)"
+            },
+            "heelHeight": {
+              "type": "string",
+              "description": "Высота каблука"
+            },
+            "heel": {
+              "type": "string",
+              "description": "Цвет и обтяжка каблука"
+            },
+            "logoPlacement": {
+              "type": "string",
+              "description": "Местоположение логотипа"
+            },
+            "characteristics": {
+              "type": "string",
+              "description": "Параметры изделия"
+            },
+            "weight": {
+              "type": "string",
+              "description": "Вес"
+            },
+            "bootlegHeight": {
+              "type": "string",
+              "description": "Высота голенища"
+            },
+            "volume": {
+              "type": "string",
+              "description": "Объем"
+            },
+            "trackingType": {
+              "type": "string",
+              "description": "Тип чипа"
+            },
+            "temperatureFrom": {
+              "type": "string",
+              "description": "Температура комфорта от"
+            },
+            "temperatureTo": {
+              "type": "string",
+              "description": "Температура комфорта до"
+            },
+            "material": {
+              "type": "integer",
+              "description": "Тип Ткани (см. таблицу ниже)"
+            },
+            "dangerous": {
+              "type": "boolean",
+              "description": "Опасный груз"
+            },
+            "jeansCut": {
+              "type": "string",
+              "description": "Тип кроя/ джинсы"
+            },
+            "nomenclatureCode": {
+              "type": "string",
+              "description": "Код ТН ВЭД"
+            },
+            "collection": {
+              "type": "string",
+              "description": "Коллекция"
+            },
+            "description": {
+              "type": "string",
+              "description": "Описание"
+            },
+            "fashion": {
+              "type": "string",
+              "description": "Фасон"
+            },
+            "age": {
+              "type": "string",
+              "description": "Возраст+"
+            },
+            "productStatus": {
+              "type": "string",
+              "description": "Статус продукта"
+            },
+            "items": {
+              "type": "array",
+              "description": "Список предложений",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "variantCode": {
+                    "type": "string",
+                    "description": "Размер производителя"
+                  },
+                  "russianSize": {
+                    "type": "string",
+                    "description": "Размер российский"
+                  },
+                  "age": {
+                    "type": "string",
+                    "description": "Возраст+"
+                  },
+                  "height": {
+                    "type": "string",
+                    "description": "Рост"
+                  },
+                  "inseam": {
+                    "type": "number",
+                    "description": "Длина внутреннего шва"
+                  },
+                  "beltGirth": {
+                    "type": "number",
+                    "description": "Обхват пояса"
+                  },
+                  "heelHeight": {
+                    "type": "number",
+                    "description": "Высота каблука"
+                  },
+                  "barcodes": {
+                    "type": "array",
+                    "description": "Список штрихкодов",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
+            "photos": {
+              "type": "array",
+              "description": "Список ссылок на фото",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "ReserveResponse": {
+      "type": "object",
+      "extends": "BaseResponse",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "vendorCode": {
+                "type": "string",
+                "description": "Код поставщика"
+              },
+              "skuNumber": {
+                "type": "string",
+                "description": "SKU номер"
+              },
+              "article": {
+                "type": "string",
+                "description": "Артикул товара"
+              },
+              "color": {
+                "type": "string",
+                "description": "Цвет товара"
+              },
+              "name": {
+                "type": "string",
+                "description": "Наименование товара"
+              },
+              "variantCode": {
+                "type": "string",
+                "description": "Размер производителя"
+              },
+              "brand": {
+                "type": "string",
+                "description": "Бренд"
+              },
+              "supplierCount": {
+                "type": "integer",
+                "description": "Остатки на складе поставщика"
+              },
+              "warehouseCount": {
+                "type": "integer",
+                "description": "Остатки на складе KUPIVIP"
+              },
+              "date": {
+                "type": "integer",
+                "description": "Дата (timestamp)"
+              },
+              "hide": {
+                "type": "boolean",
+                "description": "Удаленный (скрытый) резерв"
+              },
+              "image": {
+                "type": "string",
+                "description": "Ссылка на изображение товара"
+              },
+              "barcode": {
+                "type": "string",
+                "description": "Штрих-код товара"
+              }
+            }
+          }
+        }
+      }
+    },
+    "PurchasesResponse": {
+      "type": "object",
+      "extends": "BaseResponse",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "id заказа"
+              },
+              "orderNum": {
+                "type": "string",
+                "description": "Номер заказа покупки"
+              },
+              "orderDate": {
+                "type": "integer",
+                "description": "Дата создания (timestamp)"
+              },
+              "vendorCode": {
+                "type": "string",
+                "description": "Код поставщика"
+              },
+              "actionCode": {
+                "type": "string",
+                "description": "Код акции"
+              },
+              "contractNumber": {
+                "type": "string",
+                "description": "Номер договора"
+              },
+              "contractType": {
+                "type": "string",
+                "description": "Тип договора"
+              },
+              "state": {
+                "type": "string",
+                "description": "Статус"
+              },
+              "confirmDate": {
+                "type": "string",
+                "description": "Дата подтверждения"
+              },
+              "plannedDeliveryDate": {
+                "type": "string",
+                "description": "Дата поставки"
+              },
+              "deliveryDate": {
+                "type": "string",
+                "description": "Фактическая дата поставки"
+              },
+              "deliveryTime": {
+                "type": "string",
+                "description": "Описание интервала доставки"
+              },
+              "deliveryPoint": {
+                "type": "string",
+                "description": "Пункт доставки"
+              }
+            }
+          }
+        }
+      }
+    },
+    "PurchaseResponse": {
+      "type": "object",
+      "extends": "BaseResponse",
+      "properties": {
+        "data": {
+          "type": "object",
+          "properties": {
+            "orderNum": {
+              "type": "string",
+              "description": "Номер заказа"
+            },
+            "actionCode": {
+              "type": "string",
+              "description": "Код акции"
+            },
+            "contractNumber": {
+              "type": "string",
+              "description": "Номер договора"
+            },
+            "contractType": {
+              "type": "string",
+              "description": "Тип договора"
+            },
+            "orderDate": {
+              "type": "integer",
+              "description": "Дата заказа (timestamp)"
+            },
+            "items": {
+              "type": "array",
+              "description": "Список товаров заказа",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "photo": {
+                    "type": "string",
+                    "description": "Ссылка на фото товара"
+                  },
+                  "mark": {
+                    "type": "string",
+                    "description": "Марка"
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "Наименование"
+                  },
+                  "article": {
+                    "type": "string",
+                    "description": "Артикул"
+                  },
+                  "color": {
+                    "type": "string",
+                    "description": "Цвет поставщика"
+                  },
+                  "variantCode": {
+                    "type": "string",
+                    "description": "Размер производителя"
+                  },
+                  "quantity": {
+                    "type": "integer",
+                    "description": "Количество"
+                  },
+                  "priceIncVat": {
+                    "type": "number",
+                    "description": "Закупка, цена"
+                  },
+                  "sumIncVat": {
+                    "type": "number",
+                    "description": "Сумма Закупки, с НДС"
+                  },
+                  "barcode": {
+                    "type": "string",
+                    "description": "Штрих-код Поставщика"
+                  },
+                  "kiz": {
+                    "type": "string",
+                    "description": "Обязательность КиЗ"
+                  },
+                  "gtd": {
+                    "type": "string",
+                    "description": "ГТД"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "PurchaseStateResponse": {
+      "type": "object",
+      "extends": "BaseResponse",
+      "properties": {
+        "state": {
+          "type": "string",
+          "description": "Статус заказа"
+        }
+      }
+    },
+    "PurchaseDeliveryResponse": {
+      "type": "object",
+      "extends": "BaseResponse",
+      "properties": {
+        "deliveryTime": {
+          "type": "string",
+          "description": "Описание интервала доставки"
+        },
+        "plannedDeliveryDate": {
+          "type": "string",
+          "description": "Планируемая дата поставки в формате \"dd.MM.yyyy\""
+        },
+        "state": {
+          "type": "string",
+          "description": "Обновленный статус заказа"
+        }
+      }
+    },
+    "PurchasePointResponse": {
+      "type": "object",
+      "extends": "BaseResponse",
+      "properties": {
+        "deliveryPoint": {
+          "type": "string",
+          "description": "Установленный пункт доставки"
+        },
+        "state": {
+          "type": "string",
+          "description": "Обновленный статус заказа"
+        }
+      }
+    },
+    "DictionaryResponse": {
+      "type": "object",
+      "extends": "BaseResponse",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "string",
+                "description": "Код бренда"
+              },
+              "description": {
+                "type": "string",
+                "description": "Описание"
+              },
+              "parent": {
+                "type": "string",
+                "description": "Код родительской записи"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

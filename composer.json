@@ -1,0 +1,23 @@
+{
+    "name": "positron48/kupivip-php-client",
+    "description": "Api client for marketplace kupivip",
+    "keywords": ["REST","PHP", "KUPIVIP"],
+    "type": "library",
+    "minimum-stability": "dev",
+    "require": {
+        "guzzlehttp/guzzle-services": "^1.0@dev"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "8.5.x-dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "KupiVipApi\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "GuzzleHttp\\Tests\\": "./vendor/guzzlehttp/guzzle/tests/"
+        }
+    }
+}
