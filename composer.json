@@ -3,7 +3,6 @@
     "description": "Api client for marketplace kupivip",
     "keywords": ["REST","PHP", "KUPIVIP"],
     "type": "library",
-    "minimum-stability": "stable",
     "require": {
         "guzzlehttp/guzzle-services": "^1.0@stable"
     },
