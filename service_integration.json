@@ -29,7 +29,7 @@
       "httpMethod": "PATCH",
       "uri": "orders/{id}",
       "summary": "Редактирование",
-      "responseModel": "PurchaseStateResponse",
+      "responseModel": "BaseResponse",
       "errorResponses": [
         {
           "code": 302,
