@@ -1,7 +1,7 @@
 {
-  "name": "Kupivip",
+  "name": "Kupivip integration",
   "apiVersion": "2020-05-12",
-  "baseUrl": "http://test.api.kupivip.ru/vendors/v1/",
+  "baseUrl": "https://api.kupivip.ru/vendors/v1/",
   "description": "Api client for marketplace KupiVip (order integration)",
   "operations": {
     "getPurchase": {
@@ -13,6 +13,11 @@
         {
           "code": 302,
           "phrase": "Found",
+          "class": "\\KupiVipApi\\Exception\\RedirectException"
+        },
+        {
+          "code": 301,
+          "phrase": "Moved Permanently",
           "class": "\\KupiVipApi\\Exception\\RedirectException"
         }
       ],
@@ -34,6 +39,11 @@
         {
           "code": 302,
           "phrase": "Found",
+          "class": "\\KupiVipApi\\Exception\\RedirectException"
+        },
+        {
+          "code": 301,
+          "phrase": "Moved Permanently",
           "class": "\\KupiVipApi\\Exception\\RedirectException"
         }
       ],
