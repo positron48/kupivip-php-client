@@ -45,13 +45,13 @@
           "required": true
         },
         "status": {
-          "location": "postField",
+          "location": "json",
           "type": "string",
           "description": "Статус заказа",
           "required": true
         },
         "items": {
-          "location": "postField",
+          "location": "json",
           "type": "array",
           "description": "Список товаров заказа",
           "items": {
