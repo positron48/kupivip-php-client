@@ -1,0 +1,172 @@
+{
+  "name": "Kupivip",
+  "apiVersion": "2020-05-12",
+  "baseUrl": "http://test.api.kupivip.ru/vendors/v1/",
+  "description": "Api client for marketplace KupiVip (order integration)",
+  "operations": {
+    "getPurchase": {
+      "httpMethod": "GET",
+      "uri": "orders/{id}",
+      "summary": "Просмотр заказа и товаров, входящих в него",
+      "responseModel": "OrderResponse",
+      "errorResponses": [
+        {
+          "code": 302,
+          "phrase": "Found",
+          "class": "\\KupiVipApi\\Exception\\RedirectException"
+        }
+      ],
+      "parameters": {
+        "id": {
+          "location": "uri",
+          "type": "string",
+          "desctiption": "Идентификатор заказа",
+          "required": true
+        }
+      }
+    },
+    "editOrder": {
+      "httpMethod": "PATCH",
+      "uri": "orders/{id}",
+      "summary": "Редактирование",
+      "responseModel": "PurchaseStateResponse",
+      "errorResponses": [
+        {
+          "code": 302,
+          "phrase": "Found",
+          "class": "\\KupiVipApi\\Exception\\RedirectException"
+        }
+      ],
+      "parameters": {
+        "id": {
+          "location": "uri",
+          "type": "string",
+          "description": "Идентификатор заказа",
+          "required": true
+        },
+        "status": {
+          "location": "postField",
+          "type": "string",
+          "description": "Статус заказа",
+          "required": true
+        },
+        "items": {
+          "location": "postField",
+          "type": "array",
+          "description": "Список товаров заказа",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "Уникальный (в пределах заказа) идентификатор товарной позиции."
+              },
+              "offerId": {
+                "type": "string",
+                "description": "Уникальный идентификатор товарного предложения."
+              },
+              "gtin": {
+                "type": "string",
+                "description": "GTIN маркированного товара."
+              },
+              "serial": {
+                "type": "string",
+                "description": "Серийный номер маркированного товара."
+              },
+              "status": {
+                "type": "string",
+                "description": "Индивидуальный статус товарной позиции в заказе."
+              },
+              "count": {
+                "type": "integer",
+                "description": "Количество товара."
+              },
+              "price": {
+                "type": "integer",
+                "description": "Цена единицы товара в копейках."
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "models": {
+    "BaseResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "location": "statusCode",
+          "type": "integer",
+          "description": "Код ответа сервера"
+        },
+        "code": {
+          "type": "string",
+          "description": "Код ошибки."
+        },
+        "message": {
+          "type": "string",
+          "description": "Описание ошибки."
+        }
+      },
+      "additionalProperties": {
+        "location": "json"
+      }
+    },
+    "OrderResponse": {
+      "type": "object",
+      "extends": "BaseResponse",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Номер заказа"
+        },
+        "orderDate": {
+          "type": "string",
+          "description": "Дата создания заказа"
+        },
+        "status": {
+          "type": "string",
+          "description": "Статус заказа"
+        },
+        "items": {
+          "type": "array",
+          "description": "Список товаров заказа",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "Уникальный (в пределах заказа) идентификатор товарной позиции."
+              },
+              "offerId": {
+                "type": "string",
+                "description": "Уникальный идентификатор товарного предложения."
+              },
+              "gtin": {
+                "type": "string",
+                "description": "GTIN маркированного товара."
+              },
+              "serial": {
+                "type": "string",
+                "description": "Серийный номер маркированного товара."
+              },
+              "status": {
+                "type": "string",
+                "description": "Индивидуальный статус товарной позиции в заказе."
+              },
+              "count": {
+                "type": "integer",
+                "description": "Количество товара."
+              },
+              "price": {
+                "type": "integer",
+                "description": "Цена единицы товара в копейках."
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

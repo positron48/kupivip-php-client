@@ -10,11 +10,11 @@ use GuzzleHttp\Command\Result;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
-class ApiClient extends GuzzleClient
+class IntegrationApiClient extends GuzzleClient
 {
     public static function create($config = [])
     {
-        $serviceParams = (array) json_decode(file_get_contents(__DIR__ . '/../service.json'), true);
+        $serviceParams = (array) json_decode(file_get_contents(__DIR__ . '/../service_integration.json'), true);
         if (isset($config['baseUrl'])){
             $serviceParams['baseUrl'] = $config['baseUrl'];
         }
