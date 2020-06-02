@@ -99,7 +99,7 @@
           "required": true
         },
         "data": {
-          "location": "postField",
+          "location": "formParam",
           "type": "object",
           "required": true,
           "properties": {
@@ -447,19 +447,19 @@
       ],
       "parameters": {
         "vendorCode": {
-          "location": "postField",
+          "location": "formParam",
           "type": "string",
           "description": "Код поставщика",
           "required": true
         },
         "vendorArticle": {
-          "location": "postField",
+          "location": "formParam",
           "type": "string",
           "description": "Артикул поставщика",
           "required": true
         },
         "vendorColor": {
-          "location": "postField",
+          "location": "formParam",
           "type": "string",
           "description": "Цвет поставщика",
           "required": true
@@ -488,19 +488,19 @@
       ],
       "parameters": {
         "vendorCode": {
-          "location": "postField",
+          "location": "formParam",
           "type": "string",
           "description": "Код поставщика",
           "required": true
         },
         "vendorArticle": {
-          "location": "postField",
+          "location": "formParam",
           "type": "string",
           "description": "Артикул поставщика",
           "required": true
         },
         "vendorColor": {
-          "location": "postField",
+          "location": "formParam",
           "type": "string",
           "description": "Цвет поставщика",
           "required": true
@@ -554,31 +554,31 @@
       ],
       "parameters": {
         "vendorCode": {
-          "location": "postField",
+          "location": "formParam",
           "type": "string",
           "description": "Код поставщика",
           "required": true
         },
         "vendorArticle": {
-          "location": "postField",
+          "location": "formParam",
           "type": "string",
           "description": "Артикул поставщика",
           "required": true
         },
         "vendorColor": {
-          "location": "postField",
+          "location": "formParam",
           "type": "string",
           "description": "Цвет поставщика",
           "required": true
         },
         "variantCode": {
-          "location": "postField",
+          "location": "formParam",
           "type": "string",
           "description": "Размер производителя",
           "required": true
         },
         "count": {
-          "location": "postField",
+          "location": "formParam",
           "type": "integer",
           "description": "Актуальное количество товара",
           "required": true
@@ -647,7 +647,7 @@
       ],
       "parameters": {
         "vendorCode": {
-          "location": "postField",
+          "location": "formParam",
           "type": "string",
           "description": "Код поставщика",
           "required": true
@@ -659,7 +659,7 @@
           "required": true
         },
         "data": {
-          "location": "postField",
+          "location": "formParam",
           "type": "object",
           "required": true,
           "properties": {
@@ -720,7 +720,7 @@
       ],
       "parameters": {
         "vendorCode": {
-          "location": "postField",
+          "location": "formParam",
           "type": "string",
           "description": "Код поставщика",
           "required": true
@@ -753,7 +753,7 @@
       ],
       "parameters": {
         "vendorCode": {
-          "location": "postField",
+          "location": "formParam",
           "type": "string",
           "description": "Код поставщика",
           "required": true
@@ -765,19 +765,19 @@
           "required": true
         },
         "date": {
-          "location": "postField",
+          "location": "formParam",
           "type": "string",
           "description": "Дата планируемой поставки в формате \"yyyy-MM-dd\"",
           "required": true
         },
         "time": {
-          "location": "postField",
+          "location": "formParam",
           "type": "integer",
           "description": "Номер интервала поставки, 1-42",
           "required": true
         },
         "point": {
-          "location": "postField",
+          "location": "formParam",
           "type": "string",
           "description": "Пункт доставки",
           "required": true
@@ -798,7 +798,7 @@
       ],
       "parameters": {
         "vendorCode": {
-          "location": "postField",
+          "location": "formParam",
           "type": "string",
           "description": "Код поставщика",
           "required": true
@@ -810,7 +810,7 @@
           "required": true
         },
         "point": {
-          "location": "postField",
+          "location": "formParam",
           "type": "string",
           "description": "Пункт доставки",
           "required": true
