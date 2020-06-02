@@ -550,6 +550,11 @@
           "code": 302,
           "phrase": "Found",
           "class": "\\KupiVipApi\\Exception\\RedirectException"
+        },
+        {
+          "code": 400,
+          "phrase": "Bad Request",
+          "class": "\\KupiVipApi\\Exception\\BadRequestException"
         }
       ],
       "parameters": {
