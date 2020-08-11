@@ -24,7 +24,6 @@ class IntegrationApiClient extends GuzzleClient
         $client = new Client([
             'headers' => [
                 'Accept' => 'application/json;charset=UTF-8',
-                'Authorization' => $config['token']
             ],
             //'http_errors' => true,
             'allow_redirects' => false

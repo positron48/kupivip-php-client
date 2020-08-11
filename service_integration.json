@@ -27,6 +27,12 @@
           "type": "string",
           "desctiption": "Идентификатор заказа",
           "required": true
+        },
+        "apikey": {
+          "location": "query",
+          "type": "string",
+          "description": "Ключ авторизации",
+          "required": true
         }
       }
     },
@@ -52,6 +58,12 @@
           "location": "uri",
           "type": "string",
           "description": "Идентификатор заказа",
+          "required": true
+        },
+        "apikey": {
+          "location": "query",
+          "type": "string",
+          "description": "Ключ авторизации",
           "required": true
         },
         "status": {
