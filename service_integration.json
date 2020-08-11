@@ -72,6 +72,12 @@
           "description": "Статус заказа",
           "required": true
         },
+        "eventId": {
+          "location": "json",
+          "type": "string",
+          "description": "Метка последнего изменения заказа",
+          "required": true
+        },
         "items": {
           "location": "json",
           "type": "array",
